@@ -32,9 +32,15 @@ jobs:
           server-password: GITHUB_TOKEN
           overwrite-settings: true
           job-status: success
+          
+      - name: Download and set up Gradle
+        run: |
+          wget https://services.gradle.org/distributions/gradle-7.6.1-bin.zip
+          unzip -d $HOME/gradle gradle-7.6.1-bin.zip
+          echo "export PATH=\$HOME/gradle/gradle-7.6.1/bin:\$PATH" >> $GITHUB_ENV
 
-      - name: Grant execute permission to Gradle wrapper
-        run: chmod +x gradlew
-
+      - name: Show Gradle version
+        run: gradle --version
       - name: Build with Gradle
-        run: ./gradlew build
+        run: gradle build
+
