@@ -26,24 +26,24 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import com.example.Service.ServiceFile;
 import com.example.controller.Controller;
 
-//@SpringBootTest
+@SpringBootTest
 
-@WebMvcTest(Controller.class)
-@Import(Config.class) 
+//@WebMvcTest(Controller.class)
+//@Import(Config.class) 
 //@TestPropertySource(properties = { "my.property=jdbc:mariadb://localhost:3306/testing", "another.property=testing" })
 
 class JpaApplicationTests {
 
 	@Autowired
-	MockMvc mockMvc;
+	Controller controller;
 	
-	@MockBean
-    private ServiceFile serviceFile;
+//	@MockBean
+//    private ServiceFile serviceFile;
 	
 	@Test
 	void IntegerTest() throws Exception {
-//		assertEquals(controller.StringTest("ok"),"ok");
-		   this.mockMvc.perform(get("/first/asd")).andDo(print()).andExpect(status().isOk());
+		assertEquals(controller.StringTest("ok"),"ok");
+//		   this.mockMvc.perform(get("/first/asd")).andDo(print()).andExpect(status().isOk());
 	}
 
 }
