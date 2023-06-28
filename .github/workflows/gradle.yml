@@ -43,4 +43,7 @@ jobs:
         run: gradle --version
       - name: Build with Gradle
         run: gradle build
+        with:
+          name: build-artifacts
+          path: src 
 
